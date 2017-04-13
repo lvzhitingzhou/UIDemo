@@ -7,6 +7,8 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -71,6 +73,8 @@ public class MenuChart extends View {
     private ArrayList<Bitmap> mBmpList = new ArrayList<>();  // 绘制每个模块中的图片
     private int mTouchedId; // 触摸到的模块id；
     private float mAnimatedValue;
+    //白金区域颜色
+    private int goldColor = 0x66b8e0e0;
 
     public MenuChart(Context context) {
         this(context, null);
@@ -217,8 +221,9 @@ public class MenuChart extends View {
 
         // onSizechanged中初始化rectF都是-半径开始，在此把画布拖到中心点. 画布原来的中心点是view的左上角。
         canvas.translate(mWidth / 2, mHeight / 2);
-        canvas.drawLine(-mWidth/2,  0, mWidth/2, 0, mPaint);
-        canvas.drawLine(0, -mHeight/2 , 0, mHeight/2, mPaint);
+        //画中心线
+        canvas.drawLine(-mWidth / 2, 0, mWidth / 2, 0, mPaint);
+        canvas.drawLine(0, -mHeight / 2, 0, mHeight / 2, mPaint);
         //todo 展示时旋转中心图片
 
         // 画扇形的每个模块
@@ -228,6 +233,7 @@ public class MenuChart extends View {
 
     /**
      * 绘制扇形的每个模块
+     *
      * @param canvas 画布
      */
     private void drawPieArc(Canvas canvas) {
@@ -238,7 +244,10 @@ public class MenuChart extends View {
         float sweepAngle = 0; // 当前要绘制的角度
         for (int i = 0; i < pies.size(); i++) {
             Pie pie = pies.get(i);
-            sweepAngle = Math.min(pie.getAngle() - PIE_SPACING, mAnimatedValue - currentStartAngle );
+            Log.d("lm", "mAnimatedValue = " + mAnimatedValue);
+            // pie.getAngle() - PIE_SPACING 为了画间隔
+            sweepAngle = Math.min(pie.getAngle() - PIE_SPACING, mAnimatedValue - currentStartAngle);
+            Log.d("lm", "=== sweepAngle = " + sweepAngle);
 
 //            //防止最后一个模块缺角 ，如果是 360° 且最后一块希望是缺觉，可以注释这段
 //            if (currentStartAngle + sweepAngle == PIE_ANGLE_TOTAL - PIE_SPACING) {
@@ -252,10 +261,37 @@ public class MenuChart extends View {
 
             currentStartAngle += pie.getAngle();
         }
+        canvas.restore();
     }
 
     private void drawEachArc(Pie pie, Canvas canvas, float sweepAngle, float currentStartAngle) {
+        int layerId;
+        layerId = canvas.saveLayer(rectFLabel, mPaint, Canvas.ALL_SAVE_FLAG);
+        // 标签层
+        mXPaint.setColor(pie.getLabelColor());
+        canvas.drawArc(rectFLabel, currentStartAngle, sweepAngle, true, mXPaint);
+        // bitmap层
+        mXPaint.setColor(Color.WHITE);
+        canvas.drawArc(rectFBmp, currentStartAngle, sweepAngle, true, mXPaint);
 
+        // 先清除内层gold圈，再画图
+        mXPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        canvas.drawArc(rectFGold, currentStartAngle - PIE_SPACING, sweepAngle + PIE_SPACING, true, mXPaint);
+        mXPaint.setXfermode(null);
+
+        // 内层颜色圈 不要间隔
+        if (sweepAngle <= pie.getAngle() - PIE_SPACING) {
+            sweepAngle += PIE_SPACING;
+        }
+        mXPaint.setColor(goldColor);
+        canvas.drawArc(rectFGold, currentStartAngle, sweepAngle, true, mXPaint);
+
+        // 清空最内圈 方便画中心的图片
+        mXPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
+        canvas.drawArc(rectFIn, -1f, PIE_VIEW_ANGLE + PIE_SPACING, true, mXPaint);
+        mXPaint.setXfermode(null);
+        // mode.clear时可以有透明的效果
+        canvas.restoreToCount(layerId);
     }
 }
 
