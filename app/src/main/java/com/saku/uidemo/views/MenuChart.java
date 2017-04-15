@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.Point;
 import android.graphics.PorterDuff;
@@ -75,6 +76,10 @@ public class MenuChart extends View {
     private float mAnimatedValue;
     //白金区域颜色
     private int goldColor = 0x66b8e0e0;
+
+    private Bitmap mCenterBitmap;
+    private Matrix mBmpMatrix;
+
 
     public MenuChart(Context context) {
         this(context, null);
@@ -207,6 +212,13 @@ public class MenuChart extends View {
         mTouchedId = -1;
     }
 
+    public void setCenterBitmap(int bitmapResId, int width, int height) {
+        mCenterBitmap = BitmapFactory.decodeResource(getResources(), bitmapResId);
+        mCenterBitmap = UIUtils.zoomImage(mCenterBitmap, width, height);
+        mBmpMatrix = new Matrix();
+
+    }
+
     public void setPieData(ArrayList<Pie> pies) {
         this.pies = pies;
     }
@@ -221,14 +233,81 @@ public class MenuChart extends View {
 
         // onSizechanged中初始化rectF都是-半径开始，在此把画布拖到中心点. 画布原来的中心点是view的左上角。
         canvas.translate(mWidth / 2, mHeight / 2);
+
+        // 展示时旋转中心图片
+        if (mCenterBitmap != null) {
+            mBmpMatrix.reset();
+            //将bitmap移动中心点(原本中心点位于bitmap坐上角(0,0))
+            mBmpMatrix.postTranslate(-mCenterBitmap.getWidth() / 2, - mCenterBitmap.getHeight()/2);
+            mBmpMatrix.postRotate(360/PIE_VIEW_ANGLE*mAnimatedValue*2, mCenterBitmap.getWidth()/2, mCenterBitmap.getHeight()/2);
+            canvas.drawBitmap(mCenterBitmap, mBmpMatrix, mPaint);
+        }
+
         //画中心线
         canvas.drawLine(-mWidth / 2, 0, mWidth / 2, 0, mPaint);
         canvas.drawLine(0, -mHeight / 2, 0, mHeight / 2, mPaint);
-        //todo 展示时旋转中心图片
+
 
         // 画扇形的每个模块
         drawPieArc(canvas);
 
+        drawTextAndBitmap(canvas);
+
+    }
+
+    /**
+     * 画每个扇形的文字和 图片
+     * 绘制文字和绘制扇形的RectF/Arc 有所不同，绘制文字是当animatedValue达到某一值的时候讲文字绘制
+     */
+    private void drawTextAndBitmap(Canvas canvas) {
+
+        float currentStartAngle = startAngle;
+
+        int pivotX;  //文字标签的中心点x坐标
+        int pivotY;
+        for (int i = 0; i < pies.size(); i++) {
+            final Pie pie = pies.get(i);
+            //当要绘制的角度 >当前模块的 2/3 的时候才绘制。 增强界面动画绘制效果
+            if (mAnimatedValue <= pieAngels[i] - pie.getAngle() / 3) {
+                continue;
+            }
+            pivotX = (int) (Math.cos(Math.toRadians(currentStartAngle + pie.getAngle() / 2)) * (rLabel + r) / 2);    // java中cos操作的是弧度， 所以把角度先转换成弧度。
+            pivotY = (int) (Math.sin(Math.toRadians(currentStartAngle + pie.getAngle() / 2)) * (rLabel + r) / 2);
+            canvas.save();
+            canvas.rotate(currentStartAngle + pie.getAngle() / 2, pivotX, pivotY);  // 旋转让文字和每块弧度保持平行
+            drawTextCenter(pie.getLabel(), mLabelPaint, canvas, pivotX, pivotY);
+            canvas.restore();
+
+            pivotX = (int) (Math.cos(Math.toRadians(currentStartAngle + (pie.getAngle() / 2))) * (r + rGold) / 2);  // bmp的中心点
+            pivotY = (int) (Math.sin(Math.toRadians(currentStartAngle + (pie.getAngle() / 2))) * (r + rGold) / 2);
+
+            if (mBmpList != null && !mBmpList.isEmpty() && mBmpList.get(i) != null) {
+                canvas.drawBitmap(mBmpList.get(i), (int) (pivotX - pie.getMax_bmp_size() / 2),
+                        (int) (pivotY - pie.getMax_bmp_size() / 2), mPaint);
+            }
+            currentStartAngle += pie.getAngle();
+        }
+
+    }
+
+    /**
+     * 绘制文字
+     *
+     * @param label
+     * @param mLabelPaint
+     * @param canvas
+     * @param pivotX
+     * @param pivotY
+     */
+    private void drawTextCenter(String label, Paint mLabelPaint, Canvas canvas, int pivotX, int pivotY) {
+        //为了验证文字是否画在中心点，可以画两条基线判断一下
+        canvas.drawLine(pivotX - mWidth / 2, pivotY, pivotX + mWidth / 2, pivotY, mLabelPaint);
+        canvas.drawLine(pivotX, pivotY - mHeight / 2, pivotX, pivotY + mHeight / 2, mLabelPaint);
+
+        final Paint.FontMetrics fontMetrics = mLabelPaint.getFontMetrics();
+        final float total = -fontMetrics.ascent + fontMetrics.descent;  // 都是正数
+        final float yAxis = total / 2 - fontMetrics.descent;
+        canvas.drawText(label, pivotX, pivotY + yAxis, mLabelPaint);
     }
 
     /**
@@ -239,7 +318,7 @@ public class MenuChart extends View {
     private void drawPieArc(Canvas canvas) {
         float currentStartAngle = 0; // 当前已绘制的角度，从0开始，知道animatedValue
         canvas.save();
-        canvas.rotate(startAngle);  // 可以设置旋转的角度
+        canvas.rotate(startAngle);  // 可以设置旋转的角度。 不设置会从顺时针水平方向开始绘制
 
         float sweepAngle = 0; // 当前要绘制的角度
         for (int i = 0; i < pies.size(); i++) {
