@@ -1,7 +1,9 @@
 package com.saku.uidemo.utils;
 
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
+import android.util.DisplayMetrics;
 
 public class UIUtils {
 
@@ -15,6 +17,12 @@ public class UIUtils {
         matrix.postScale(scaleWidth, scaleHeight);
 
         return Bitmap.createBitmap(bmp, 0, 0, oldWidth, oldHeight, matrix, true);
+
+    }
+
+    public static int dp2px(Context context, int dp) {
+        final DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return (int) (metrics.density * dp + 0.5f);
 
     }
 }

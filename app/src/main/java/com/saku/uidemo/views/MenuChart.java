@@ -372,5 +372,13 @@ public class MenuChart extends View {
         // mode.clear时可以有透明的效果
         canvas.restoreToCount(layerId);
     }
+
+    public void setStartAngle(int startAngle) {
+        this.startAngle = startAngle;
+    }
+
+    public void setPieShowingAngle(int pieShowingAngle) {
+        this.PIE_VIEW_ANGLE = pieShowingAngle;
+    }
 }
 
