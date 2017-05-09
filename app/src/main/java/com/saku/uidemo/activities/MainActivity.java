@@ -74,9 +74,9 @@ public class MainActivity extends AppCompatActivity {
                 final CoffeeMaker maker = coffeeShop.maker();
                 maker.brew();
 
-//                coffeeShop.inject(MainActivity.this);
-                mThermosiphon = coffeeShop.getPump();
-                mThermosiphon.pump();
+//                coffeeShop.inject(MainActivity.this);   // 或者下面这种方式提供mThermosiphon
+//                mThermosiphon = coffeeShop.getPump();
+//                mThermosiphon.pump();
             }
         });
     }

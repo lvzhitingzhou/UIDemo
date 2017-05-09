@@ -5,6 +5,11 @@ import android.util.Log;
 public class ElectricHeater implements Heater {
     public static final String TAG = ElectricHeater.class.getSimpleName();
     private boolean isHot;
+
+    public ElectricHeater() {
+        Log.i(TAG, "ElectricHeater: constructing");
+    }
+
     @Override
     public void on() {
         Log.i(TAG, "on: is heating");
