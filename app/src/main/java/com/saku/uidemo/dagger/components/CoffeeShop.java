@@ -23,6 +23,6 @@ public interface CoffeeShop {
 //
 //    ElectricHeater getHeater();
 
-    void inject(MainActivity mainActivity);
+//    void inject(MainActivity mainActivity);
 
 }
