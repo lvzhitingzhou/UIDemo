@@ -1,5 +1,7 @@
 package com.saku.uidemo.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -10,8 +12,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import com.saku.uidemo.R;
+import com.saku.uidemo.dagger.components.CoffeeShop;
+import com.saku.uidemo.dagger.components.DaggerCoffeeShop;
+import com.saku.uidemo.dagger.data.CoffeeMaker;
+import com.saku.uidemo.dagger.data.ElectricHeater;
+import com.saku.uidemo.dagger.data.Thermosiphon;
+import com.saku.uidemo.dagger.modules.DripCoffeeModule;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
+//    @Inject
+    Thermosiphon mThermosiphon;
+
+//    @Inject
+//    ElectricHeater mElectricHeater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +41,25 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("OneTravel://rentcar/zhima?bussinessId=270&sid=rentcar"));
+//                MainActivity.this.startActivity(intent);
+
+//                DaggerCoffeeShop.builder().dripCoffeeModule(new DripCoffeeModule()).build();
+                final CoffeeShop coffeeShop = DaggerCoffeeShop.builder().build();
+                final CoffeeMaker maker = coffeeShop.maker();
+                maker.brew();
+
+//                coffeeShop.inject(MainActivity.this);
+                mThermosiphon = coffeeShop.getPump();
+                mThermosiphon.pump();
             }
         });
     }
