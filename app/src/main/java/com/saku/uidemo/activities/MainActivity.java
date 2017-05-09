@@ -1,5 +1,7 @@
 package com.saku.uidemo.activities;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,10 +17,23 @@ import com.saku.uidemo.utils.UIUtils;
 import com.saku.uidemo.views.MenuChart;
 
 import java.util.ArrayList;
+import com.saku.uidemo.dagger.components.CoffeeShop;
+import com.saku.uidemo.dagger.components.DaggerCoffeeShop;
+import com.saku.uidemo.dagger.data.CoffeeMaker;
+import com.saku.uidemo.dagger.data.ElectricHeater;
+import com.saku.uidemo.dagger.data.Thermosiphon;
+import com.saku.uidemo.dagger.modules.DripCoffeeModule;
+
+import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Pie> mPies = new ArrayList<>();
     private MenuChart mMenuChart;
+//    @Inject
+    Thermosiphon mThermosiphon;
+
+//    @Inject
+//    ElectricHeater mElectricHeater;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,16 +50,35 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+//
+//        initData();
+//
+//        mMenuChart = (MenuChart) findViewById(R.id.menu_chart);
+//        mMenuChart.setPieData(mPies);
+//        mMenuChart.setStartAngle(180);  //设置起始角度
+//        mMenuChart.setPieShowingAngle(180);//设置总共角度
+//        mMenuChart.setCenterBitmap(R.mipmap.menu, UIUtils.dp2px(MainActivity.this, 60), UIUtils.dp2px(MainActivity.this, 60));
 
-        initData();
-
-        mMenuChart = (MenuChart) findViewById(R.id.menu_chart);
-        mMenuChart.setPieData(mPies);
-        mMenuChart.setStartAngle(180);  //设置起始角度
-        mMenuChart.setPieShowingAngle(180);//设置总共角度
-        mMenuChart.setCenterBitmap(R.mipmap.menu, UIUtils.dp2px(MainActivity.this, 60), UIUtils.dp2px(MainActivity.this, 60));
 
 
+        findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_VIEW);
+//                intent.setData(Uri.parse("OneTravel://rentcar/zhima?bussinessId=270&sid=rentcar"));
+//                MainActivity.this.startActivity(intent);
+
+//                DaggerCoffeeShop.builder().dripCoffeeModule(new DripCoffeeModule()).build();
+                final CoffeeShop coffeeShop = DaggerCoffeeShop.builder().build();
+                final CoffeeMaker maker = coffeeShop.maker();
+                maker.brew();
+
+//                coffeeShop.inject(MainActivity.this);
+                mThermosiphon = coffeeShop.getPump();
+                mThermosiphon.pump();
+            }
+        });
     }
 
     @Override
@@ -122,5 +156,5 @@ public class MainActivity extends AppCompatActivity {
         mPies.add(Pie6);
 
     }
-    
+
 }
