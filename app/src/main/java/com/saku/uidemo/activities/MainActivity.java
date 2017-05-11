@@ -1,30 +1,31 @@
 package com.saku.uidemo.activities;
 
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.saku.uidemo.R;
 import com.saku.uidemo.data.Pie;
-import com.saku.uidemo.utils.UIUtils;
 import com.saku.uidemo.views.MenuChart;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import com.saku.uidemo.dagger.components.CoffeeShop;
 import com.saku.uidemo.dagger.components.DaggerCoffeeShop;
 import com.saku.uidemo.dagger.data.CoffeeMaker;
-import com.saku.uidemo.dagger.data.ElectricHeater;
 import com.saku.uidemo.dagger.data.Thermosiphon;
-import com.saku.uidemo.dagger.modules.DripCoffeeModule;
-
-import javax.inject.Inject;
 
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Pie> mPies = new ArrayList<>();
@@ -155,6 +156,133 @@ public class MainActivity extends AppCompatActivity {
         Pie6.setLabelColor(0xff944a48);
         mPies.add(Pie6);
 
+    }
+
+
+
+
+    void listadapter(){
+        RecyclerView rv = new RecyclerView(this);
+
+    }
+
+    public abstract static class ListX<I, T> implements DeX<List<T>>{
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+            View view = null;
+            return new MyViewHolder(view);
+        }
+
+        public abstract void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data, I itemModel) ;
+//        {
+//            holder.itemView.setBackgroundColor(Color.RED);
+//        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data) {
+            onBindViewHolder(holder, position, data, (I) data.get(position));
+        }
+
+//        @Override
+//        public boolean isTypeFit(List<T> list, int position, Integer itemType) {
+//            return list.get(position).type == itemType;
+//        }
+
+
+//        @Override
+//        public boolean isTypeFit(T list, int position, Integer itemType) {
+////                        return list.get(position) instanceof ItemModel1;
+//            return position %4 == 0;
+////            return list.get(position).type == itemType;
+//        }
+    }
+
+    public interface DeX<T> {
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, ItemModel itemModel);
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, T data);
+        public boolean isTypeFit(T list, int position, Integer itemType);
+    }
+
+//    Map<Integer, ListX> map1 = new HashMap<>();
+//    Map<Integer, X2> map2 = new HashMap<>();
+//    Map<Integer, X3> map3 = new HashMap<>();
+
+    Map<Integer, DeX> map = new HashMap<>();
+
+
+    abstract class ItemModel {
+        int type;
+    }
+
+    class ItemModel1 extends ItemModel {}
+    class ItemModel2 extends ItemModel {}
+    class ItemModel3 extends ItemModel {}
+
+//    List<ItemModel> itemModels = new ArrayList<>();
+    List<ItemModel> itemModels = new ArrayList<>();
+
+
+    public abstract class CAdapter<T> extends RecyclerView.Adapter {
+        private T data;
+
+        public CAdapter(T data, Map<Integer, DeX<T>> map) {
+            this.data = data;
+
+//            map.put(1, new ListXDescedant());
+//            map.put(2, new X2());
+//            map.put(3, new X3());
+
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            boolean fit = false;
+            int viewType = -1;
+            for (Map.Entry<Integer, DeX> entry : map.entrySet()) {
+                final Integer itemType = entry.getKey();
+                final DeX deX = entry.getValue();
+                fit = deX.isTypeFit(data, position, itemType);
+                if (fit) {
+                    viewType = itemType;
+                    break;
+                }
+            }
+
+            if (fit) {
+                return viewType;
+            } else {
+                throw new RuntimeException("itemModel type is wrong");
+            }
+        }
+
+        @Override
+        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+            final RecyclerView.ViewHolder holder = map.get(viewType).onCreateViewHolder(parent, viewType);
+            return holder;
+        }
+
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+            final int viewType = getItemViewType(position);
+//            map.get(viewType).onBindViewHolder(holder, position, list.get(position));
+            map.get(viewType).onBindViewHolder(holder, position, data);
+        }
+
+//        @Override
+//        public int getItemCount() {
+//            return list.size();
+//        }
+    }
+
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
+
+        public TextView tv;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 
 }
