@@ -12,7 +12,7 @@ public class ViewHolderAnimator {
             throw new IllegalStateException("Cannot animate the layout of a view that has no parent");
 
         int start = holder.itemView.getMeasuredHeight();
-        holder.itemView.measure(View.MeasureSpec.makeMeasureSpec(parent.getMeasuredWidth(), View.MeasureSpec.AT_MOST), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        holder.itemView.measure(View.MeasureSpec.makeMeasureSpec(parent.getMeasuredWidth(), View.MeasureSpec.EXACTLY), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
         int end = holder.itemView.getMeasuredHeight();
 //  6
         final Animator animator = LayoutAnimator.ofHeight(holder.itemView, start, end);

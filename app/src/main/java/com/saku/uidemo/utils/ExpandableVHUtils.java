@@ -69,7 +69,6 @@ public class ExpandableVHUtils {
             animator.addListener(new AnimatorListenerAdapter() {
                 @Override
                 public void onAnimationEnd(Animator animation) {
-//                    expandView.setVisibility(View.GONE);
                     final ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(expandView, View.ALPHA, 0);
                     alphaAnimator.addListener(new ViewHolderAnimator.ViewHolderAnimatorListener(holder));
                     alphaAnimator.start();
