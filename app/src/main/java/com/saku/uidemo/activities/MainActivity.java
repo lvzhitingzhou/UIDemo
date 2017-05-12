@@ -30,7 +30,7 @@ import com.saku.uidemo.dagger.data.Thermosiphon;
 public class MainActivity extends AppCompatActivity {
     private ArrayList<Pie> mPies = new ArrayList<>();
     private MenuChart mMenuChart;
-//    @Inject
+    //    @Inject
     Thermosiphon mThermosiphon;
 
 //    @Inject
@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity {
 //        mMenuChart.setStartAngle(180);  //设置起始角度
 //        mMenuChart.setPieShowingAngle(180);//设置总共角度
 //        mMenuChart.setCenterBitmap(R.mipmap.menu, UIUtils.dp2px(MainActivity.this, 60), UIUtils.dp2px(MainActivity.this, 60));
-
 
 
         findViewById(R.id.btn).setOnClickListener(new View.OnClickListener() {
@@ -159,87 +158,86 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
-
-    void listadapter(){
-        RecyclerView rv = new RecyclerView(this);
-
+    abstract class ItemModel {
+        int type;
     }
 
-    public abstract static class ListX<I, T> implements DeX<List<T>>{
+    class ItemModel1 extends ItemModel {
+    }
+
+    class ItemModel2 extends ItemModel {
+    }
+
+    class ItemModel3 extends ItemModel {
+    }
+
+    void listadapter() {
+        RecyclerView rv = new RecyclerView(this);
+        Map<Integer, DeX> map = new HashMap<>();
+        map.put(0, new TopListDeX());
+
+        List<ItemModel> itemModels = new ArrayList<>();
+        ListDeXAdapter<List<ItemModel>> adapter = new ListDeXAdapter<>(itemModels, map);
+    }
+
+
+    public class TopListDeX<ItemModel1, ItemModel> extends ListDeX<ItemModel1, ItemModel>{
+        public TopListDeX() {
+        }
+        //  点击事件从adapter传入， 根据点击的position可以拿到item的数据
+        // 在viewhOLDER中可以拿到posisiton  getAdapterPosition()
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = null;
             return new MyViewHolder(view);
         }
 
-        public abstract void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data, I itemModel) ;
-//        {
-//            holder.itemView.setBackgroundColor(Color.RED);
-//        }
+        @Override
+        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<ItemModel> data, ItemModel1 itemModel) {
+            holder.itemView.setBackgroundColor(Color.BLUE);
+        }
+    }
+
+    // I extends T， T是recyclerView的每个Item的数据类， I 是具体的某种数据类
+    public abstract static class ListDeX<I, T> implements DeX<List<T>> {
+        @Override
+        public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
 
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data) {
             onBindViewHolder(holder, position, data, (I) data.get(position));
         }
 
-//        @Override
-//        public boolean isTypeFit(List<T> list, int position, Integer itemType) {
-//            return list.get(position).type == itemType;
-//        }
+        @Override
+        public boolean isTypeFit(List<T> data, int position, Integer itemType) {
+            return false;
+        }
 
-
-//        @Override
-//        public boolean isTypeFit(T list, int position, Integer itemType) {
-////                        return list.get(position) instanceof ItemModel1;
-//            return position %4 == 0;
-////            return list.get(position).type == itemType;
-//        }
+        public abstract void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data, I itemModel);
     }
 
     public interface DeX<T> {
         public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
-//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, ItemModel itemModel);
+
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, T data);
-        public boolean isTypeFit(T list, int position, Integer itemType);
+        // T 和adapter里的T 一致
+        public boolean isTypeFit(T data, int position, Integer itemType);
     }
-
-//    Map<Integer, ListX> map1 = new HashMap<>();
-//    Map<Integer, X2> map2 = new HashMap<>();
-//    Map<Integer, X3> map3 = new HashMap<>();
-
-    Map<Integer, DeX> map = new HashMap<>();
-
-
-    abstract class ItemModel {
-        int type;
-    }
-
-    class ItemModel1 extends ItemModel {}
-    class ItemModel2 extends ItemModel {}
-    class ItemModel3 extends ItemModel {}
-
-//    List<ItemModel> itemModels = new ArrayList<>();
-    List<ItemModel> itemModels = new ArrayList<>();
-
 
     public abstract class CAdapter<T> extends RecyclerView.Adapter {
-        private T data;
+        protected T data;
+        protected Map<Integer, DeX<T>> map;
 
         public CAdapter(T data, Map<Integer, DeX<T>> map) {
             this.data = data;
-
-//            map.put(1, new ListXDescedant());
-//            map.put(2, new X2());
-//            map.put(3, new X3());
-
+            this.map = map;
         }
 
         @Override
         public int getItemViewType(int position) {
             boolean fit = false;
             int viewType = -1;
-            for (Map.Entry<Integer, DeX> entry : map.entrySet()) {
+            for (Map.Entry<Integer, DeX<T>> entry : map.entrySet()) {
                 final Integer itemType = entry.getKey();
                 final DeX deX = entry.getValue();
                 fit = deX.isTypeFit(data, position, itemType);
@@ -266,14 +264,19 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
             final int viewType = getItemViewType(position);
-//            map.get(viewType).onBindViewHolder(holder, position, list.get(position));
             map.get(viewType).onBindViewHolder(holder, position, data);
         }
+    }
 
-//        @Override
-//        public int getItemCount() {
-//            return list.size();
-//        }
+    public class ListDeXAdapter<L extends List<?>> extends CAdapter<L> {
+        public ListDeXAdapter(L data, Map<Integer, DeX<L>> map) {
+            super(data, map);
+        }
+
+        @Override
+        public int getItemCount() {
+            return data == null ? 0 : data.size();
+        }
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
@@ -282,6 +285,7 @@ public class MainActivity extends AppCompatActivity {
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            getAdapterPosition();
         }
     }
 
