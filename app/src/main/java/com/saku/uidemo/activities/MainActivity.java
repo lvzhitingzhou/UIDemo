@@ -157,136 +157,136 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
-    abstract class ItemModel {
-        int type;
-    }
-
-    class ItemModel1 extends ItemModel {
-    }
-
-    class ItemModel2 extends ItemModel {
-    }
-
-    class ItemModel3 extends ItemModel {
-    }
-
-    void listadapter() {
-        RecyclerView rv = new RecyclerView(this);
-        Map<Integer, DeX> map = new HashMap<>();
-        map.put(0, new TopListDeX());
-
-        List<ItemModel> itemModels = new ArrayList<>();
-        ListDeXAdapter<List<ItemModel>> adapter = new ListDeXAdapter<>(itemModels, map);
-    }
-
-
-    public class TopListDeX<ItemModel1, ItemModel> extends ListDeX<ItemModel1, ItemModel>{
-        public TopListDeX() {
-        }
-        //  点击事件从adapter传入， 根据点击的position可以拿到item的数据
-        // 在viewhOLDER中可以拿到posisiton  getAdapterPosition()
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = null;
-            return new MyViewHolder(view);
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<ItemModel> data, ItemModel1 itemModel) {
-            holder.itemView.setBackgroundColor(Color.BLUE);
-        }
-    }
-
-    // I extends T， T是recyclerView的每个Item的数据类， I 是具体的某种数据类
-    public abstract static class ListDeX<I, T> implements DeX<List<T>> {
-        @Override
-        public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data) {
-            onBindViewHolder(holder, position, data, (I) data.get(position));
-        }
-
-        @Override
-        public boolean isTypeFit(List<T> data, int position, Integer itemType) {
-            return false;
-        }
-
-        public abstract void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data, I itemModel);
-    }
-
-    public interface DeX<T> {
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
-
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, T data);
-        // T 和adapter里的T 一致
-        public boolean isTypeFit(T data, int position, Integer itemType);
-    }
-
-    public abstract class CAdapter<T> extends RecyclerView.Adapter {
-        protected T data;
-        protected Map<Integer, DeX<T>> map;
-
-        public CAdapter(T data, Map<Integer, DeX<T>> map) {
-            this.data = data;
-            this.map = map;
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            boolean fit = false;
-            int viewType = -1;
-            for (Map.Entry<Integer, DeX<T>> entry : map.entrySet()) {
-                final Integer itemType = entry.getKey();
-                final DeX deX = entry.getValue();
-                fit = deX.isTypeFit(data, position, itemType);
-                if (fit) {
-                    viewType = itemType;
-                    break;
-                }
-            }
-
-            if (fit) {
-                return viewType;
-            } else {
-                throw new RuntimeException("itemModel type is wrong");
-            }
-        }
-
-        @Override
-        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
-            final RecyclerView.ViewHolder holder = map.get(viewType).onCreateViewHolder(parent, viewType);
-            return holder;
-        }
-
-        @Override
-        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-            final int viewType = getItemViewType(position);
-            map.get(viewType).onBindViewHolder(holder, position, data);
-        }
-    }
-
-    public class ListDeXAdapter<L extends List<?>> extends CAdapter<L> {
-        public ListDeXAdapter(L data, Map<Integer, DeX<L>> map) {
-            super(data, map);
-        }
-
-        @Override
-        public int getItemCount() {
-            return data == null ? 0 : data.size();
-        }
-    }
-
-    public static class MyViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView tv;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            getAdapterPosition();
-        }
-    }
+//
+//    abstract class ItemModel {
+//        int type;
+//    }
+//
+//    class ItemModel1 extends ItemModel {
+//    }
+//
+//    class ItemModel2 extends ItemModel {
+//    }
+//
+//    class ItemModel3 extends ItemModel {
+//    }
+//
+//    void listadapter() {
+//        RecyclerView rv = new RecyclerView(this);
+//        Map<Integer, DeX> map = new HashMap<>();
+//        map.put(0, new TopListDeX());
+//
+//        List<ItemModel> itemModels = new ArrayList<>();
+//        ListDeXAdapter<List<ItemModel>> adapter = new ListDeXAdapter<>(itemModels, map);
+//    }
+//
+//
+//    public class TopListDeX<ItemModel1, ItemModel> extends ListDeX<ItemModel1, ItemModel>{
+//        public TopListDeX() {
+//        }
+//        //  点击事件从adapter传入， 根据点击的position可以拿到item的数据
+//        // 在viewhOLDER中可以拿到posisiton  getAdapterPosition()
+//        @Override
+//        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//            View view = null;
+//            return new MyViewHolder(view);
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<ItemModel> data, ItemModel1 itemModel) {
+//            holder.itemView.setBackgroundColor(Color.BLUE);
+//        }
+//    }
+//
+//    // I extends T， T是recyclerView的每个Item的数据类， I 是具体的某种数据类
+//    public abstract static class ListDeX<I, T> implements DeX<List<T>> {
+//        @Override
+//        public abstract RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
+//
+//        @Override
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data) {
+//            onBindViewHolder(holder, position, data, (I) data.get(position));
+//        }
+//
+//        @Override
+//        public boolean isTypeFit(List<T> data, int position, Integer itemType) {
+//            return false;
+//        }
+//
+//        public abstract void onBindViewHolder(RecyclerView.ViewHolder holder, int position, List<T> data, I itemModel);
+//    }
+//
+//    public interface DeX<T> {
+//        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType);
+//
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position, T data);
+//        // T 和adapter里的T 一致
+//        public boolean isTypeFit(T data, int position, Integer itemType);
+//    }
+//
+//    public abstract class CAdapter<T> extends RecyclerView.Adapter {
+//        protected T data;
+//        protected Map<Integer, DeX<T>> map;
+//
+//        public CAdapter(T data, Map<Integer, DeX<T>> map) {
+//            this.data = data;
+//            this.map = map;
+//        }
+//
+//        @Override
+//        public int getItemViewType(int position) {
+//            boolean fit = false;
+//            int viewType = -1;
+//            for (Map.Entry<Integer, DeX<T>> entry : map.entrySet()) {
+//                final Integer itemType = entry.getKey();
+//                final DeX deX = entry.getValue();
+//                fit = deX.isTypeFit(data, position, itemType);
+//                if (fit) {
+//                    viewType = itemType;
+//                    break;
+//                }
+//            }
+//
+//            if (fit) {
+//                return viewType;
+//            } else {
+//                throw new RuntimeException("itemModel type is wrong");
+//            }
+//        }
+//
+//        @Override
+//        public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//
+//            final RecyclerView.ViewHolder holder = map.get(viewType).onCreateViewHolder(parent, viewType);
+//            return holder;
+//        }
+//
+//        @Override
+//        public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+//            final int viewType = getItemViewType(position);
+//            map.get(viewType).onBindViewHolder(holder, position, data);
+//        }
+//    }
+//
+//    public class ListDeXAdapter<L extends List<?>> extends CAdapter<L> {
+//        public ListDeXAdapter(L data, Map<Integer, DeX<L>> map) {
+//            super(data, map);
+//        }
+//
+//        @Override
+//        public int getItemCount() {
+//            return data == null ? 0 : data.size();
+//        }
+//    }
+//
+//    public static class MyViewHolder extends RecyclerView.ViewHolder {
+//
+//        public TextView tv;
+//
+//        public MyViewHolder(View itemView) {
+//            super(itemView);
+//            getAdapterPosition();
+//        }
+//    }
 
 }

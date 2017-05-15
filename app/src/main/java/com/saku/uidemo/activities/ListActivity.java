@@ -2,8 +2,10 @@ package com.saku.uidemo.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.saku.uidemo.R;
 import com.saku.uidemo.activities.adapter.ListTextAdapter;
@@ -31,7 +33,22 @@ public class ListActivity extends AppCompatActivity {
         };
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        ListTextAdapter adapter = new ListTextAdapter(this, mData);
+        final ListTextAdapter adapter = new ListTextAdapter(this, mData);
         mRecyclerView.setAdapter(adapter);
+
+//        StaggeredGridLayoutManager manager = new StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL);
+//        GridLayoutManager manager1 = new GridLayoutManager(this, 3);
+//        manager1.setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+//            @Override
+//            public int getSpanSize(int position) {
+//                final int viewType = adapter.getItemViewType(position);
+//                switch (viewType) {
+//                    case 0:
+//                        return 2;
+//                    case 1:
+//                        return ...;
+//                }
+//            }
+//        });
     }
 }
