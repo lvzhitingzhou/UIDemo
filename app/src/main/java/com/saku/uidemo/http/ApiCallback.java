@@ -11,14 +11,15 @@ public abstract class ApiCallback<T> implements Callback<BaseData<T>> {
 
     @Override
     public void onResponse(Call<BaseData<T>> call, Response<BaseData<T>> response) {
-        if (response.body() == null) {
+        final BaseData<T> body = response.body();
+        if (body == null) {
             onFail(-1, "!!! 网络连接失败！！！");
             return;
         }
-        if (response.body().errCode == 0) {
-            onSuccess(response.body().data);
+        if (body.errCode == 0) {
+            onSuccess(body.data);
         } else {
-            onFail(response.body().errCode, response.body().errMsg);
+            onFail(body.errCode, body.errMsg);
         }
     }
 

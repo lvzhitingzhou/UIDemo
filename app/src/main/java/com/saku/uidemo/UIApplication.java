@@ -8,7 +8,7 @@ import com.saku.uidemo.component.DaggerNetComponent;
 import com.saku.uidemo.component.NetComponent;
 import com.saku.uidemo.module.AppModule;
 import com.saku.uidemo.module.NetModule;
-import com.saku.uidemo.module.RESTModule;
+import com.saku.uidemo.module.ApiModule;
 import com.saku.uidemo.utils.ConstantUtils;
 import com.saku.uidemo.utils.DaggerHelper;
 
@@ -33,7 +33,7 @@ public class UIApplication extends Application {
 
         final ApiComponent apiComponent = DaggerApiComponent.builder()
                 .netComponent(netComponent)
-                .rESTModule(new RESTModule())
+                .apiModule(new ApiModule())
                 .build();
 
         DaggerHelper.getInstance().setNetComponent(netComponent);

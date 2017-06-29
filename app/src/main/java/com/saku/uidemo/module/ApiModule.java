@@ -12,7 +12,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 
 @Module
-public class RESTModule {
+public class ApiModule {
 
     @Provides
     Call<BaseData<GeneralProduct>> provideGeneralProduct(RESTApi restApi) {
