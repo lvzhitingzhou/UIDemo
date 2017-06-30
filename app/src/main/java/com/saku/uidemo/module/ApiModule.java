@@ -1,5 +1,6 @@
 package com.saku.uidemo.module;
 
+import com.saku.uidemo.annotation.ApiScope;
 import com.saku.uidemo.data.GeneralProduct;
 import com.saku.uidemo.http.BaseData;
 import com.saku.uidemo.http.RESTApi;
@@ -21,6 +22,7 @@ public class ApiModule {
 
 //    @Singleton
     @Provides
+    @ApiScope
     RESTApi provideRESTApi(Retrofit retrofit) {
         return retrofit.create(RESTApi.class);
     }

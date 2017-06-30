@@ -1,8 +1,9 @@
 <resources>
 
     <!-- Base application theme. -->
+    <!--<style name="AppTheme" parent="android:Theme">-->
+    <!-- Customize your theme here. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
@@ -17,4 +18,1083 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+
+    <style name="HorizontalLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/rtc_cg_1</item>  <!-- cg7 #e5e5e5-->
+    </style>
+
+    <style name="RoundRectFrameLayout">
+        <item name="roundRadius">5dp</item>
+        <item name="roundStrokeColor">#0000</item>
+        <item name="roundStrokeWidth">0.5dp</item>
+        <item name="android:background">#0000</item>
+    </style>
+
+
+
+
+    <style name="RtcStyle"></style>
+
+    <style name="RtcStyle.TextView"></style>
+
+    <style name="RtcStyle.Button"></style>
+
+    <style name="RtcStyle.Button.BT0">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:background">@drawable/rtc_bt0_selector</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT1">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:background">@drawable/rtc_bt1_selector</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT2">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#4A4C5B</item>
+        <item name="android:background">@drawable/rtc_bt2_selector</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT0.BTA">
+        <item name="android:layout_height">50dp</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT0.BTB">
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT1.BTA">
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="RtcStyle.Button.BT2.BTA">
+        <item name="android:layout_height">44dp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0">
+        <item name="android:textSize">10sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1">
+        <item name="android:textSize">11sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3">
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5">
+        <item name="android:textSize">15sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7">
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9">
+        <item name="android:textSize">19sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11">
+        <item name="android:textSize">22sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13">
+        <item name="android:textSize">26sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14">
+        <item name="android:textSize">40sp</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T0.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T1.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T2.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T3.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T4.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T5.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T6.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T7.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T8.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T9.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T10.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T11.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T12.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T13.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CY0">
+        <item name="android:textColor">@color/rtc_cy_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CY1">
+        <item name="android:textColor">@color/rtc_cy_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CY2">
+        <item name="android:textColor">@color/rtc_cy_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG0">
+        <item name="android:textColor">@color/rtc_cg_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG1">
+        <item name="android:textColor">@color/rtc_cg_1</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG2">
+        <item name="android:textColor">@color/rtc_cg_2</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG3">
+        <item name="android:textColor">@color/rtc_cg_3</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG4">
+        <item name="android:textColor">@color/rtc_cg_4</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG5">
+        <item name="android:textColor">@color/rtc_cg_5</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG6">
+        <item name="android:textColor">@color/rtc_cg_6</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG7">
+        <item name="android:textColor">@color/rtc_cg_7</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG8">
+        <item name="android:textColor">@color/rtc_cg_8</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CG9">
+        <item name="android:textColor">@color/rtc_cg_9</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CT0">
+        <item name="android:textColor">@color/rtc_ct_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CR0">
+        <item name="android:textColor">@color/rtc_cr_0</item>
+    </style>
+
+    <style name="RtcStyle.TextView.T14.CB0">
+        <item name="android:textColor">@color/rtc_cb_0</item>
+    </style>
 </resources>

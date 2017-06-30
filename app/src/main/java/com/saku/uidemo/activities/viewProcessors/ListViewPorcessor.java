@@ -24,4 +24,19 @@ public abstract class ListViewPorcessor<I, D> implements BaseViewProcessor<List<
 
     public abstract boolean matchesViewType(int position, List<D> data, D item);
 
+
+//    static class A<T> {
+//        void add(A<T> a) {
+//
+//        }
+//    }
+//
+//    static class B<D> extends A<List<D>> {
+//
+//    }
+//
+//    static {
+//        A<List<String>> a = new A<>();
+//        a.add(new B<String>());
+//    }
 }

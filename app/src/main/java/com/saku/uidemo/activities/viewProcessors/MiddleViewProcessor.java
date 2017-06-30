@@ -11,7 +11,7 @@ import java.util.List;
 /**
  * 处理recyclerView的adapter对应的view绑定，数据展示等的基类
  */
-public class MiddleViewProcessor<MiddleData, ItemData> extends ListViewPorcessor<MiddleData, ItemData>{
+public class MiddleViewProcessor extends ListViewPorcessor<MiddleData, ItemData>{
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {

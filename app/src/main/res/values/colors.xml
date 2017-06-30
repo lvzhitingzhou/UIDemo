@@ -5,4 +5,40 @@
     <color name="colorAccent">#FF4081</color>
     <color name="background">#f5f7ef</color>
     <color name="barBackground">#bece79</color>
+    <color name="transparent">#00000000</color>
+
+
+    <color name="rtc_cy_0">#FC9153</color>
+
+    <color name="rtc_cy_1">#4A4C5B</color>
+
+    <color name="rtc_cy_2">#FA8919</color>
+
+    <color name="rtc_cg_0">#FFFFFF</color>
+
+    <color name="rtc_cg_1">#EEEEEE</color>
+
+    <color name="rtc_cg_2">#CCCCCC</color>
+
+    <color name="rtc_cg_3">#999999</color>
+
+    <color name="rtc_cg_4">#666666</color>
+
+    <color name="rtc_cg_5">#333333</color>
+
+    <color name="rtc_cg_6">#F3F4F5</color>
+
+    <color name="rtc_cg_7">#E5E5E5</color>
+
+    <color name="rtc_cg_8">#ADADAD</color>
+
+    <color name="rtc_cg_9">#E0E0E0</color>
+
+    <color name="rtc_ct_0">#3cbca3</color>
+
+    <color name="rtc_cr_0">#DB2E2A</color>
+
+    <color name="rtc_cb_0">#e525262d</color>
+
+    <color name="rtc_white">#ffffffff</color>
 </resources>

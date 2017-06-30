@@ -3,6 +3,7 @@ package com.saku.uidemo;
 import android.app.Application;
 
 import com.saku.uidemo.component.ApiComponent;
+import com.saku.uidemo.component.AppComponent;
 import com.saku.uidemo.component.DaggerApiComponent;
 import com.saku.uidemo.component.DaggerNetComponent;
 import com.saku.uidemo.component.NetComponent;
@@ -26,8 +27,9 @@ public class UIApplication extends Application {
     }
 
     private void setComponent() {
+        AppModule appModule = new AppModule(this);
         final NetComponent netComponent = DaggerNetComponent.builder()
-                .appModule(new AppModule(this))
+                .appModule(appModule)
                 .netModule(new NetModule(ConstantUtils.baseUrl))
                 .build();
 
@@ -36,8 +38,11 @@ public class UIApplication extends Application {
                 .apiModule(new ApiModule())
                 .build();
 
+        final AppComponent appComponent = AppComponent.Initializer.init(this);
+
         DaggerHelper.getInstance().setNetComponent(netComponent);
-        DaggerHelper.getInstance().setRestApiComponent(apiComponent);
+        DaggerHelper.getInstance().setApiComponent(apiComponent);
+        DaggerHelper.getInstance().setAppComponent(appComponent);
     }
 
 

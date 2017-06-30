@@ -3,4 +3,11 @@
     <string name="action_settings">Settings</string>
     <string name="title_activity_dagger">DaggerActivity</string>
     <string name="title_activity_choose_car">ChooseCarActivity</string>
+
+    <string name="rtc_change_fetch_site">更换取车点</string>
+    <string name="rtc_sold_out_nearby">附近售罄</string>
+    <string name="rtc_storage_short">库存紧张</string>
+    <string name="rtc_daily_rental_text">每日租金</string>
+    <string name="rtc_more_promo">更多优惠</string>
+
 </resources>

@@ -1,12 +1,14 @@
 package com.saku.uidemo.utils;
 
 import com.saku.uidemo.component.ApiComponent;
+import com.saku.uidemo.component.AppComponent;
 import com.saku.uidemo.component.NetComponent;
 
 public class DaggerHelper {
     private volatile static DaggerHelper sDaggerHelper;
     private NetComponent mNetComponent;
     private ApiComponent mApiComponent;
+    private AppComponent mAppComponent;
 
     private DaggerHelper() {
 
@@ -33,11 +35,19 @@ public class DaggerHelper {
         this.mNetComponent = netComponent;
     }
 
-    public void setRestApiComponent(ApiComponent restApiComponent) {
-        this.mApiComponent = restApiComponent;
+    public void setApiComponent(ApiComponent apiComponent) {
+        this.mApiComponent = apiComponent;
     }
 
     public ApiComponent getApiComponent() {
         return mApiComponent;
+    }
+
+    public AppComponent getAppComponent() {
+        return mAppComponent;
+    }
+
+    public void setAppComponent(AppComponent mAppComponent) {
+        this.mAppComponent = mAppComponent;
     }
 }

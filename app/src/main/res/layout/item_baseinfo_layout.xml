@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/appearance_add_pic_header"
+    android:clipChildren="false"
+    android:layerType="software"
+    android:paddingBottom="10dp">
+
+    <com.saku.uidemo.views.RatioImageView
+        android:id="@+id/rtc_car_iv"
+        android:layout_width="121dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:ratio="1.56"
+        tools:src="@drawable/rtc_car_type_placeholder" />
+
+    <View
+        android:id="@+id/rtc_car_cover_v"
+        android:layout_width="120dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="13dp"
+        android:background="#80ffffff"
+        android:visibility="gone" />
+
+    <com.saku.uidemo.views.RoundRectFrameLayout
+        android:id="@+id/rtc_tag_rrl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="#45547f"
+        android:visibility="gone"
+        app:roundBottomLeftRadius="0dp"
+        app:roundBottomRightRadius="2dp"
+        app:roundTopLeftRadius="0dp"
+        app:roundTopRightRadius="2dp">
+
+        <TextView
+            android:id="@+id/rtc_recommendtag_tv"
+            style="@style/RtcStyle.TextView.T0.CG0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="1dp"
+            android:paddingLeft="6dp"
+            android:paddingRight="6dp"
+            android:paddingTop="1dp"
+            tools:text="推荐" />
+    </com.saku.uidemo.views.RoundRectFrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/rtc_car_info_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="60dp"
+        android:layout_marginTop="13dp"
+        android:layout_toRightOf="@+id/rtc_car_iv"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/rtc_car_name_tv"
+            style="@style/RtcStyle.TextView.T5.CG5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="24dp"
+            android:ellipsize="end"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="2"
+            tools:text="比亚迪大众等同等车型迪大众等同等车型" />
+
+        <TextView
+            android:id="@+id/rtc_car_desc_tv"
+            style="@style/RtcStyle.TextView.T1.CG4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="沪牌 | 混动 |沪牌 | 混动|沪牌 | 混动沪牌 | 混动" />
+
+        <TextView
+            android:id="@+id/rtc_coupon_tv"
+            style="@style/RtcStyle.TextView.T1.CG4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableLeft="@drawable/rtc_common_icon_coupon"
+            android:drawablePadding="7dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            tools:text="优惠券抵扣60元优惠券抵扣60元优惠券抵扣60元优惠券抵扣60元优惠券抵扣60元" />
+
+        <TextView
+            android:id="@+id/rtc_activity_tv"
+            style="@style/RtcStyle.TextView.T1.CG4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:drawableLeft="@drawable/rtc_common_icon_activity"
+            android:drawablePadding="7dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:visibility="visible"
+            tools:text="自由阶梯-租两天享9折活动很优惠" />
+
+        <!--<android.support.v7.widget.RecyclerView-->
+        <!--android:id="@+id/rtc_activity_rv"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:focusable="false"-->
+        <!--android:clickable="false"/>-->
+
+        <LinearLayout
+            android:id="@+id/rtc_activity_list_ll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="6dp"
+            android:layout_marginTop="-5dp"
+            android:visibility="gone"/>
+
+        <com.didi.rentcar.views.RoundRectFrameLayout
+            android:id="@+id/rtc_activity_nav_layout"
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="4dp"
+            android:background="#f8f8f8"
+            android:visibility="visible"
+            app:roundRadius="2dp">
+
+            <TextView
+                android:id="@+id/rtc_activity_nav_tv"
+                style="@style/RtcStyle.TextView.T1.CG4"
+                android:layout_width="wrap_content"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:background="@color/transparent"
+                android:button="@null"
+                android:drawablePadding="5dp"
+                android:drawableRight="@drawable/rtc_icon_arrow_down"
+                android:gravity="center"
+                android:text="@string/rtc_more_promo" />
+        </com.didi.rentcar.views.RoundRectFrameLayout>
+    </LinearLayout>
+
+    <com.saku.uidemo.views.TagLayout
+        android:id="@+id/rtc_tl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rtc_car_info_ll"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        android:layout_marginTop="2dp"
+        android:layout_toLeftOf="@+id/rtc_storage_short_tv"
+        android:layout_toRightOf="@id/rtc_car_iv"
+        android:gravity="left"
+        app:margin_horizontal="5dp"
+        app:margin_vertical="10dp" />
+
+    <com.saku.uidemo.views.RoundRectFrameLayout
+        android:id="@+id/rtc_storageinfo_rrf"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rtc_tl"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/rtc_car_iv"
+        android:background="@color/rtc_cg_3"
+        android:visibility="visible"
+        app:roundRadius="1dp">
+
+        <TextView
+            android:id="@+id/rtc_storageinfo_tv"
+            style="@style/RtcStyle.TextView.T1.CG0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/rtc_original_rental_tv"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:text="@string/rtc_sold_out_nearby"
+            android:textColor="@color/rtc_cg_0" />
+    </com.saku.uidemo.views.RoundRectFrameLayout>
+
+    <TextView
+        android:id="@+id/rtc_change_fetch_site_tv"
+        style="@style/RtcStyle.TextView.T2.CY0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/rtc_storageinfo_rrf"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="-2dp"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        android:drawablePadding="5dp"
+        android:drawableRight="@drawable/rtc_change_site_arrow_right"
+        android:padding="2dp"
+        android:text="@string/rtc_change_fetch_site"
+        android:visibility="visible" />
+
+    <View
+        android:id="@+id/rtc_line_car_info_down"
+        style="@style/HorizontalLine"
+        android:layout_below="@+id/rtc_storageinfo_rrf"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        android:layout_marginTop="6dp"
+        android:layout_toRightOf="@id/rtc_car_iv"
+        android:visibility="visible" />
+
+    <LinearLayout
+        android:id="@+id/rtc_cartype_rental_ll"
+        android:layout_width="match_parent"
+        android:layout_height="42dp"
+        android:layout_below="@+id/rtc_line_car_info_down"
+        android:layout_toRightOf="@+id/rtc_car_iv"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:id="@+id/rtc_car_type_special_rl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/rtc_car_special_tv"
+                style="@style/RtcStyle.TextView.T1.CG4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:drawablePadding="6dp"
+                android:drawableRight="@drawable/rtc_special_arrow_right"
+                android:paddingBottom="2dp"
+                android:paddingLeft="4dp"
+                android:paddingRight="4dp"
+                android:paddingTop="2dp"
+                android:visibility="gone"
+                tools:text="了解户外探索季" />
+
+            <LinearLayout
+                android:id="@+id/rtc_type_text_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="visible">
+
+                <TextView
+                    android:id="@+id/rtc_car_type_tv"
+                    style="@style/RtcStyle.TextView.T1.CG4"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical"
+                    android:maxLines="1"
+                    android:paddingRight="5dp"
+                    tools:text="大众车型型车型大众车型" />
+
+                <ImageView
+                    android:id="@+id/rtc_car_type_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_toRightOf="@id/rtc_car_type_tv"
+                    android:src="@drawable/rtc_car_arrow_down" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rtc_daily_rental_rl"
+            android:layout_width="78dp"
+            android:layout_height="match_parent"
+            android:visibility="visible">
+
+            <TextView
+                android:id="@+id/rtc_daily_rental_tv"
+                style="@style/RtcStyle.TextView.T1.CG4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/rtc_daily_rental_iv"
+                android:gravity="center_vertical"
+                android:paddingRight="5dp"
+                tools:text="每日租金" />
+
+            <ImageView
+                android:id="@+id/rtc_daily_rental_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+                android:src="@drawable/rtc_car_arrow_down" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/rtc_v"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="8dp" />
+
+    <TextView
+        android:id="@+id/rtc_final_rental_tv"
+        style="@style/RtcStyle.TextView.T3.CG5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/rtc_v"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        android:layout_marginTop="-3dp"
+        android:visibility="visible"
+        tools:text="¥120/天" />
+
+    <TextView
+        android:id="@+id/rtc_original_rental_tv"
+        style="@style/RtcStyle.TextView.T2.CG2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/rtc_final_rental_tv"
+        android:layout_marginBottom="3dp"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        tools:text="￥168" />
+
+    <TextView
+        android:id="@+id/rtc_storage_short_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/rtc_original_rental_tv"
+        android:layout_marginRight="@dimen/rtc_car_item_margin_right"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/rtc_bg_white_orage_stroke"
+        android:gravity="center"
+        android:paddingBottom="1dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:paddingTop="1dp"
+        android:text="@string/rtc_storage_short"
+        android:textColor="#FC9153"
+        android:textSize="9sp"
+        android:visibility="visible" />
+
+    <!--<LinearLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/rtc_cartype_rental_ll"-->
+        <!--android:orientation="vertical">-->
+
+        <!--<include-->
+            <!--layout="@layout/rtc_car_type_layout"-->
+            <!--android:visibility="gone" />-->
+
+        <!--<include-->
+            <!--android:id="@+id/rtc_car_price_llt"-->
+            <!--layout="@layout/rtc_new_daily_price"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="gone" />-->
+    <!--</LinearLayout>-->
+</RelativeLayout>

@@ -11,7 +11,6 @@ public abstract class BaseTypeHolder<T> {
 
 
     protected SparseArray<BaseViewProcessor<T>> mViewPros;
-//    protected Map<Integer, BaseViewProcessor> mViewPros;   // key如果不连续，用map比较合适
 
     public BaseTypeHolder() {
         mViewPros = new SparseArray<>();
